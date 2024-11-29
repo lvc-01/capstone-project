@@ -5,7 +5,7 @@ by AWSome-4
 
 Proposed file structure:
 
-/self-storage-app
+|self-storage-app
 │
 ├── /infrastructure          # AWS infrastructure-as-code (e.g., CDK, CloudFormation)
 │   ├── /lambda              # Lambda functions (separate per functionality)
