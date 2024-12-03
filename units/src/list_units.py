@@ -3,7 +3,7 @@ import os
 import boto3
 from boto3.dynamodb.conditions import *
 
-units_table = os.getenv('TABLE_NAME')
+units_table = os.getenv('StorageUnits')
 dynamodb = boto3.resource('dynamodb')
 
 
