@@ -15,7 +15,7 @@ dynamodb = boto3.resource('dynamodb')
 logger = Logger()
 metrics = Metrics()
 
-units_table = os.getenv('TABLE_NAME')
+units_table = os.getenv('TABLE_NAME') ####### use the booking table 
 idempotency_table = os.getenv('IDEMPOTENCY_TABLE_NAME')
 
 persistence_layer = DynamoDBPersistenceLayer(table_name=idempotency_table)

@@ -6,7 +6,7 @@ from aws_lambda_powertools.metrics import MetricUnit
 from status import *
 import os
 
-units_table = os.getenv('TABLE_NAME')
+units_table = os.getenv('TABLE_NAME') ####### use the booking table 
 dynamodb = boto3.resource('dynamodb')
 
 logger = Logger()

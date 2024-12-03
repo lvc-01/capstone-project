@@ -8,13 +8,10 @@ dynamodb = boto3.resource('dynamodb')
 
 
 def list_units(event):
-    user_id = event['requestContext']['authorizer']['claims']['sub']
-
     table = dynamodb.Table(units_table)
-    response = table.query(KeyConditionExpression=Key('userId').eq(user_id))
-    user_units = [item['data'] for item in response['Items']]
-
-    return user_units
+    response = table.scan()
+    units = [item['data'] for item in response['Items']]
+    return units
 
 
 def lambda_handler(event, context):
