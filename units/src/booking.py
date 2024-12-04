@@ -43,7 +43,8 @@ def create_booking(unit_id, user_id, start_date, end_date, booking_id):
             'startDate': start_date,
             'endDate': end_date,
             'billing': 'pre paid',
-            'paymentMethod': 'card'
+            'paymentMethod': 'card',
+            'cancellationNotice': '3',
         }
     }
     ddb_item = json.loads(json.dumps(ddb_item), parse_float=Decimal)
@@ -92,6 +93,7 @@ def book_unit(event):
     detail['BookingId'] = booking_id
     detail['billing'] = 'pre paid'
     detail['paymentMethod'] = 'card'
+    detail['cancellationNotice'] = '3'
 
     logger.info(f"Unit {unit_id} has been successfully booked with BookingId {booking_id}.")
 

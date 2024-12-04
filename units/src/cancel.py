@@ -51,7 +51,7 @@ def cancel_booking(user_id, unit_id):
     )
 
     table = dynamodb.Table(units_table)
-    unit_status = UnitStatus.AVAILABLE if booking_data['status'] != UnitStatus.PROBLEM else UnitStatus.PROBLEM
+    unit_status = UnitStatus.CANCELLING
     table.update_item(
         Key={'unitId': unit_id},
         UpdateExpression="set #data.#status = :unit_status",
