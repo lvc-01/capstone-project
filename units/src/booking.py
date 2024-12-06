@@ -45,6 +45,8 @@ def create_booking(unit_id, user_id, start_date, end_date, booking_id):
             'billing': 'pre paid',
             'paymentMethod': 'card',
             'cancellationNotice': '3',
+            'authorizedUser': '-',
+            'unlocked': False
         }
     }
     ddb_item = json.loads(json.dumps(ddb_item), parse_float=Decimal)

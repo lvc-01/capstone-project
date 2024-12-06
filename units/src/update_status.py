@@ -22,7 +22,7 @@ def update_status(unit_id):
         },
     )
     
-    return {"message": f"Booking for unit {unit_id} successfully deleted and unit status updated."}
+    return {"message": f"Unit {unit_id} status updated."}
 
 
 def lambda_handler(event, context):
