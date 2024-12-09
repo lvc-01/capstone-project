@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Locations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+       
+        h2 {
+            text-align: center;
+            color: #81C784;
+            margin-bottom: 30px;
+        }
+
+        .locations-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .location-card {
+            display: flex;
+            flex-direction: row;
+            background-color: #1f1f1f;
+            border-radius: 15px;
+            gap:30px;
+            width: 70%;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s;
+        }
+
+        .location-card:hover {
+            transform: scale(1.05);
+        }
+
+        .location-card img {
+            width: 30%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .location-card h1 {
+            margin-bottom: 50px;
+            color: #81C784;
+        }
+
+        .location-details {
+            text-align: left;
+            margin: 10px 0;
+        }
+
+        .location-details p {
+            margin: 5px 0;
+        }
+
+        .location-details a {
+            color: #81C784;
+            text-decoration: none;
+        }
+
+        .location-details a:hover {
+            text-decoration: underline;
+        }
+
+        .learn-more-btn {
+            margin: auto;
+            height: max-content;
+            padding: 10px;
+            color: #121212;
+            background-color: #81C784;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .learn-more-btn:hover {
+            background-color: #66bb6a;
+        }
+    </style>
+</head>
+<body>
+    <h2>Our Storage Locations</h2>
+    <div class="locations-container">
+        <!-- Location 1 -->
+        <div class="location-card">
+            <img src="inventory_2_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="Alberton Storage">
+            
+            <div class="location-details">
+                <h1>Alberton Storage</h1>
+                <p><strong>Address:</strong> 30 Elands Close Road, Alberton</p>
+                <p><strong>Contact:</strong> Courtney</p>
+                <p><strong>Phone:</strong> <a href="tel:0103130200">010 313 0200</a></p>
+                <p><strong>Email:</strong> <a href="mailto:alberton@ucanstore.co.za">alberton@ucanstore.co.za</a></p>
+                <p><a href="#">Get Directions</a></p>
+            </div>
+            <a href="units.html" class="learn-more-btn">Select</a>
+        </div>
+
+        <!-- Location 2 -->
+        <div class="location-card">
+            <img src="shelves_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="Benoni Storage">
+            
+            <div class="location-details">
+                <h1>Benoni Storage</h1>
+                <p><strong>Address:</strong> 45 Main Road, Benoni</p>
+                <p><strong>Contact:</strong> Lisa</p>
+                <p><strong>Phone:</strong> <a href="tel:0114456789">011 445 6789</a></p>
+                <p><strong>Email:</strong> <a href="mailto:benoni@ucanstore.co.za">benoni@ucanstore.co.za</a></p>
+                <p><a href="#">Get Directions</a></p>
+            </div>
+            <a href="units.html" class="learn-more-btn">Select</a>
+        </div>
+
+        <!-- Location 3 -->
+        <div class="location-card">
+            <img src="warehouse_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.svg" alt="Centurion Storage">
+            
+            <div class="location-details">
+                <h1>Centurion Storage</h1>
+                <p><strong>Address:</strong> 123 High Street, Centurion</p>
+                <p><strong>Contact:</strong> David</p>
+                <p><strong>Phone:</strong> <a href="tel:0123345678">012 334 5678</a></p>
+                <p><strong>Email:</strong> <a href="mailto:centurion@ucanstore.co.za">centurion@ucanstore.co.za</a></p>
+                <p><a href="#">Get Directions</a></p>
+            </div>
+            <a href="units.html" class="learn-more-btn">Select</a>
+        </div>
+    </div>
+</body>
+</html>

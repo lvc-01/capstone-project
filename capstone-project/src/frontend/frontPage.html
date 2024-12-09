@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Storage Works</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.how-storage-works {
+    text-align: center;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+.how-storage-works h2 {
+    color: #81C784;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.steps-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.step {
+    background-color: #1C1C1C;
+    border: 1px solid #333;
+    border-radius: 10px;
+    width: 250px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+}
+
+.step:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.icon {
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: #81C784;
+}
+
+.step h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+.step p {
+    font-size: 0.9em;
+    line-height: 1.5;
+    color: #cccccc;
+}
+
+a{color: #ffffff;}
+
+nav {
+            display: flex;
+            justify-content: flex-end; /* Align items to the right */
+            gap: 10px; /* Add spacing between links */
+            padding: 10px; /* Add padding around the nav bar */}
+
+        nav a {
+            height: max-content;
+            padding: 10px;
+            color: #121212;
+            background-color: #81C784;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #66bb6a;
+        }
+    </style>
+</head>
+<body>
+    <section class="how-storage-works">
+        <nav>
+            <a href="index copy.html">Log in</a>
+            <a href="signup copy.html">Sign up</a>
+        </nav>
+        <h2>How AWSome Storage Works</h2>
+        <div class="steps-container">
+            <a href="locations.html" class="step">
+                <div class="icon">📍</div>
+                <h3>1. Choose A Location</h3>
+                <p>Our self-storage facility offers convenient locations throughout the city, allowing you to choose the one that is closest to your home or office.</p>
+            </a>
+            <a href="units.html" class="step">
+                <div class="icon">📦</div>
+                <h3>2. Choose A Unit</h3>
+                <p>Our units are clean, secure, and climate-controlled, ensuring that your belongings are protected while in storage.</p>
+            </a>
+            <div class="step">
+                <div class="icon">📋</div>
+                <h3>3. Reserve Your Unit</h3>
+                <p>With our online reservation system, reserving a unit is quick and easy, allowing you to secure the perfect unit in just a few clicks.</p>
+            </div>
+            <div class="step">
+                <div class="icon">📍</div>
+                <h3>4. Move In Online</h3>
+                <p>With our online platform, you can manage your account, make payments, and access your unit 24/7, making self-storage easy and convenient.</p>
+            </div>
+            <div class="step">
+                <div class="icon">🔒</div>
+                <h3>5. Share your unit</h3>
+                <p>Want to share the unit with someone else? No problem! Add them as an associate and they can share your privilege of being able to unlock your unit.</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

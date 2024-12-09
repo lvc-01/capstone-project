@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Reserve</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        h2 {
+            color: #81C784;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            color: #121212;
+            max-width: 700px;
+            margin: 0 auto;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-container label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        .form-container input, .form-container select, .form-container button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .form-container button {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        .summary {
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .summary h3 {
+            margin: 0 0 10px;
+            color: #333;
+        }
+
+        .summary p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>Quick Reserve</h2>
+    <div class="form-container">
+        <form id="booking-form">
+            <!-- Move-in and Move-out Dates -->
+            <label for="move-in-date">Move-In Date</label>
+            <input type="date" id="move-in-date" required>
+
+            <label for="move-out-date">Move-Out Date (Optional)</label>
+            <input type="date" id="move-out-date">
+
+            <!-- Payment Type -->
+            <label for="payment-type">Payment Type</label>
+            <select id="payment-type" required>
+                <option value="">Select Payment Type</option>
+                <option value="credit-card">Credit Card</option>
+                <option value="paypal">PayPal</option>
+                <option value="bank-transfer">Bank Transfer</option>
+            </select>
+
+            <!-- Summary Section -->
+            <div class="summary">
+                <h3>Locker Details</h3>
+                <p><strong>Unit Type:</strong> Locker</p>
+                <p><strong>Price:</strong> $240/month</p>
+                <p><strong>Location:</strong> Downtown Storage Facility</p>
+            </div>
+
+            <!-- Confirmation Button -->
+            <button type="submit">Confirm Reservation</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('booking-form').addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent default form submission
+
+            // Get form data
+            const bookingData = {
+                booking_id: Math.floor(Math.random() * 100000), // Generate random booking ID
+                StartDate: document.getElementById('move-in-date').value,
+                EndDate: document.getElementById('move-out-date').value || null,
+                PaymentMethod: document.getElementById('payment-type').value,
+                BillingOption: 'monthly' // Hardcoded, modify as necessary
+            };
+
+            // Send data to AWS Lambda via API Gateway
+            try {
+                const response = await fetch('https://iniwo3m6k3.execute-api.us-east-1.amazonaws.com/prod', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(bookingData)
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    alert('Booking successful! Booking ID: ' + result.booking_id);
+                } else {
+                    alert('Failed to create booking. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while processing your booking.');
+            }
+        });
+    </script>
+</body>
+</html>

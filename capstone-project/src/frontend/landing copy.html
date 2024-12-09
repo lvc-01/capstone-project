@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to AWSome Storage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            color: #81C784; /* Matches the green theme */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-top: 15px;
+            color: #ffffff;
+            opacity: 0.8;
+        }
+
+        .welcome-container {
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .button-container {
+            margin-top: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #121212;
+            background-color: #81C784;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .cta-button:hover {
+            background-color: #66bb6a;
+            transform: scale(1.05);
+        }
+    </style>
+    <script>
+      // Redirect after 2 seconds
+      setTimeout(() => {
+          window.location.href = "https://capstone-project-v3-bucket.s3.us-east-1.amazonaws.com/index.html"; // Replace with your target URL
+      }, 4000);
+  </script>
+</head>
+<body>
+    <div class="welcome-container">
+        <h1>Welcome to AWSome Storage</h1>
+        <h2>Your Self-Storage Solution in the Digital Age</h2>
+    </div>
+</body>
+</html>
+

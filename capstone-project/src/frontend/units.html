@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage Units</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #81C784;
+        }
+
+        .units-table{border-radius: 8px;}
+
+        table {
+            width: 90%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #1f1f1f;
+            border-radius: 8px;
+            
+        }
+
+        table th, table td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #81C784;
+
+        }
+
+        table th {
+            background-color: #81C784;
+            color: #121212;
+
+        }
+
+        table tr:hover {
+            background-color: #333333;
+        }
+
+        .no-data {
+            text-align: center;
+            color: #f44336;
+        }
+
+        nav {
+            display: flex;
+            justify-content: flex-end; /* Align items to the right */
+            gap: 10px; /* Add spacing between links */
+            padding: 10px; /* Add padding around the nav bar */}
+
+        nav a {
+            height: max-content;
+            padding: 10px;
+            color: #121212;
+            background-color: #81C784;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #66bb6a;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index copy.html">Log in</a>
+        <a href="signup copy.html">Sign up</a>
+    </nav>
+    <h2>Storage Units</h2>
+    <div style="text-align: center; margin-bottom: 20px;">
+        <label for="filter-type">Unit Type:</label>
+        <select id="filter-type">
+            <option value="">All</option>
+            <option value="Locker">Locker</option>
+            <option value="Single Garage">Single Garage</option>
+            <option value="Double Garage">Double Garage</option>
+        </select>
+
+        <label for="filter-status">Status:</label>
+        <select id="filter-status">
+            <option value="">All</option>
+            <option value="Available">Available</option>
+            <option value="Reserved">Reserved</option>
+        </select>
+
+        <label for="filter-price">Max Price:</label>
+        <input type="number" id="filter-price" placeholder="Enter max price" min="0">
+        <button onclick="applyFilters()">Apply Filters</button>
+    </div>
+    <table id="units-table">
+        <thead>
+            <tr>
+                <th>Unit ID</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Reserve</th>
+            </tr>
+        </thead>
+        <tbody id="units-body">
+            <tr>
+                <td colspan="4" class="no-data">Loading...</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+    
+    const apiEndpoint = "https://v1tst2wfak.execute-api.us-east-1.amazonaws.com/prod";
+
+async function fetchUnits() {
+    try {
+        const response = await fetch(apiEndpoint);
+        if (!response.ok) {
+            throw new Error("Failed to fetch units data.");
+        }
+
+        const data = await response.json();
+        console.log("API Response:", data); // Check the response format
+
+        // Safely access data
+        const units = data.units?.Items || data.Items || [];
+        displayUnits(units);
+    } catch (error) {
+        console.error("Error fetching units:", error);
+        displayError();
+    }
+}
+
+function displayUnits(units) {
+    const unitsBody = document.getElementById("units-body");
+    unitsBody.innerHTML = "";
+
+    if (!units || units.length === 0) {
+        unitsBody.innerHTML = '<tr><td colspan="4" class="no-data">No units available.</td></tr>';
+        return;
+    }
+
+    units.forEach(unit => {
+        const buttonColumn = unit.Status.toLowerCase() === "available"
+                    ? `<a href="booking.html" onclick="reserveUnit('${unit.UnitID}')">Reserve</a>`
+                    : "";
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${unit.UnitID || "N/A"}</td>
+            <td>${unit.Type?.trim() || "N/A"}</td>
+            <td>${unit.Price || "N/A"}</td>
+            <td>${unit.Status || "N/A"}</td>
+            <td>${buttonColumn}</td>
+        `;
+        unitsBody.appendChild(row);
+    });
+}
+
+function displayError() {
+    const unitsBody = document.getElementById("units-body");
+    unitsBody.innerHTML = '<tr><td colspan="4" class="no-data">Failed to load data. Please try again later.</td></tr>';
+}
+
+fetchUnits();
+
+
+    </script>
+</body>
+</html>
