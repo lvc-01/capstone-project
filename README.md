@@ -1,4 +1,4 @@
-# Digital Self-Storage Solution
+# SafeSpace, Your Self-Storage Solution in the Digital Age
 
 A modern, serverless self-storage management system built on AWS, enabling customers to rent, manage, and access storage units through a web application without human intervention.
 
@@ -19,7 +19,7 @@ A modern, serverless self-storage management system built on AWS, enabling custo
 - Comprehensive access logging
 
 ### Payment & Billing
-- Multiple payment methods (Card, EFT)
+- Multiple payment methods (Card, EFT, PayPal)
 - Flexible billing options (Pre-pay, Monthly, Yearly)
 - Dynamic discount system
 - Automated invoice generation
@@ -55,14 +55,14 @@ A modern, serverless self-storage management system built on AWS, enabling custo
 - AWS Account with appropriate permissions
 - Node.js (v14 or later)
 - AWS CLI configured
-- Python 3.8+ (for Lambda functions)
+- Python 3.9 (for Lambda functions)
 
 ### Installation
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-org/self-storage-solution.git
-cd self-storage-solution
+git clone git@github.com:lvc-01/capstone-project.git
+cd capstone-project
 ```
 
 2. Install dependencies:
@@ -84,10 +84,10 @@ npm run deploy:frontend
 
 1. Create a `.env` file in the project root:
 ```
-AWS_REGION=your-region
+AWS_REGION= us-east-1
 COGNITO_USER_POOL_ID=your-user-pool-id
-COGNITO_CLIENT_ID=your-client-id
-API_ENDPOINT=your-api-endpoint
+** COGNITO_CLIENT_ID=your-client-id
+** API_ENDPOINT=your-api-endpoint
 ```
 
 2. Configure AWS services:
@@ -98,6 +98,7 @@ API_ENDPOINT=your-api-endpoint
 ## Development
 
 ### Project Structure
+
 ```
 /
 ├── backend/
@@ -159,7 +160,7 @@ npm run deploy:frontend
 
 ## API Documentation
 
-API documentation is available at:
+** API documentation is available at:
 - Development: `https://api-dev.your-domain.com/docs`
 - Production: `https://api.your-domain.com/docs`
 
@@ -171,9 +172,6 @@ API documentation is available at:
 4. Push to the branch
 5. Create a Pull Request
 
-## Security
-
-For security concerns, please contact security@your-domain.com
 
 ## License
 
@@ -181,4 +179,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Support
 
-For support, email support@your-domain.com or create an issue in the repository.
+For support, please make your way to our customer support page for the appropriate channels of communication.
