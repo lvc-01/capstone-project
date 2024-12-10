@@ -7,3 +7,4 @@ pytest-freezegun
 requests
 aws-lambda-powertools
 aws-xray-sdk
+simplejson
