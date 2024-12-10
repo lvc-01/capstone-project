@@ -3,7 +3,7 @@ import boto3
 import os
 
 dynamodb = boto3.resource('dynamodb')
-booking_table = os.getenv('Bookings')
+booking_table = os.getenv('BookingTable')
 
 def add_authorized_user(booking_id, event):
     try:
@@ -11,10 +11,10 @@ def add_authorized_user(booking_id, event):
         table = dynamodb.Table(booking_table)
 
         response = table.update_item(
-            Key={'bookingId': booking_id},
-            UpdateExpression="set #authorizedUser = :user",
+            Key={'BookingId': booking_id},
+            UpdateExpression="set #AuthorizedUser = :user",
             ExpressionAttributeNames={
-                "#authorizedUser": "authorizedUser"
+                "#AuthorizedUser": "AuthorizedUser"
             },
             ExpressionAttributeValues={
                 ":user": user_id
@@ -28,12 +28,12 @@ def add_authorized_user(booking_id, event):
         }
     
     except Exception as e:
-        print(f"Error updating booking for bookingId {booking_id}: {e}")
+        print(f"Error updating booking for BookingId {booking_id}: {e}")
         raise
 
 
 def lambda_handler(event, context):
-    booking_id = event['pathParameters']['bookingId']
+    booking_id = event['BookingId']
 
     try:
         result = add_authorized_user(booking_id, event)

@@ -3,27 +3,47 @@ import os
 import boto3
 from boto3.dynamodb.conditions import *
 
-units_table = os.getenv('StorageUnits')
+# Initialize DynamoDB client
 dynamodb = boto3.resource('dynamodb')
 
-
+# Function to list units from the DynamoDB table
 def list_units(event):
-    table = dynamodb.Table(units_table)
+    table = dynamodb.Table('listUnits')
     response = table.scan()
-    units = [item['data'] for item in response['Items']]
-    return units
-
+    return response
 
 def lambda_handler(event, context):
     try:
+        # Fetch units from DynamoDB
         units = list_units(event)
+
+        # Return response with CORS headers
         response = {
             "statusCode": 200,
-            "headers": {},
+            "headers": {
+                "Access-Control-Allow-Origin": "*",  # Allow all origins or specify your frontend URL
+                "Access-Control-Allow-Methods": "GET, OPTIONS",  # Allowed methods
+                "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Api-Key",  # Allowed headers
+                "Content-Type": "application/json"  # Set content type to JSON
+            },
             "body": json.dumps({
-                "units": units
+                "units": units  # Data retrieved from DynamoDB
+            })
+        }
+
+        return response
+    except Exception as err:
+        # Handle error and return a response with the error message
+        response = {
+            "statusCode": 500,
+            "headers": {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Api-Key",
+                "Content-Type": "application/json"
+            },
+            "body": json.dumps({
+                "error": str(err)
             })
         }
         return response
-    except Exception as err:
-        raise
